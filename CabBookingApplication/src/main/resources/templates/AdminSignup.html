@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<style>
+form {
+	margin-top: 30px;
+	border: 3px solid black;
+	padding: 30px;
+}
+
+body {
+	background-image: url(register.jpg);
+	background-size: cover;
+}
+</style>
+</head>
+<body>
+	<div style="float: right; margin-top: 40px; margin-right: 20px;">
+		<a th:href="@{/Adminhome1}" class="btn btn-success">Back to Home</a>
+	</div>
+	<div class="col-md-3"></div>
+	<div class="col-md-5">
+		<form th:action="@{/stddata}" method="post" class="form-group">
+			<label>id</label> <input type="number" name="admin" id="i"
+				th:field="${admin.id}" class="form-control" readonly required> <label>userName</label>
+			<input type="text" name="user5" id="uname"
+				th:field="${admin.username}" class="form-control" required>
+			<label>password</label> <input type="password" name="user4" id="pass"
+				th:field="${admin.password}" class="form-control" required>
+			<label>address</label> <input type="text" name="user3" id="add"
+				th:field="${admin.address}" class="form-control" required> <label>mobile
+				No</label> <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="user2" id="mobile"
+				th:field="${admin.mobileNo}" class="form-control" placeholder="000-000-0000" required>
+			<label>Role</label> <input type="text" name="admin" id="role"
+				th:field="${admin.role}" class="form-control" required> <label>Email</label>
+			<input type="email" name="user1" id="e" th:field="${admin.email}"
+				class="form-control" required><br> <input type="submit"
+				 value="submit" class="btn btn-success">
+			<input type="reset" value="cancle" class="btn btn-danger">
+
+		</form>
+	</div>
+</body>
+ </html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+body {
+	background-image: url(bg.jpg);
+}
+
+table, th, td {
+	border: 2px solid black;
+}
+</style>
+
+
+<script>
+	$(document).ready(
+			function() {
+				$("#myInput").on(
+						"keyup",
+						function() {
+							var value = $(this).val().toLowerCase();
+							$("#myTable tr").filter(
+									function() {
+										$(this).toggle(
+												$(this).text().toLowerCase()
+														.indexOf(value) > -1)
+									});
+						});
+			});
+</script>
+</head>
+<body>
+	<h1 style="text-align: center; text-shadow: 2px 2px 8px #FF0000;">CAB</h1>
+	<div style="padding-left: 40px;">
+		<a th:href="@{/home}" class="btn btn-success">Back to Home</a>
+	</div>
+	<div class="col-md-8"></div>
+	<div class="col-md-4">
+		<form class="form-inline" action="/action_page.php">
+			<p>Type something in the input field to search the table for
+				Cabid CabType CabPErKm:</p>
+			<input id="myInput" class="form-control mr-sm-2" type="text"
+				placeholder="Search..">
+		</form>
+		<br>
+		<br>
+	</div>
+
+	<div class="col-md-3"></div>
+	<div class="col-md-5">
+		<table class="table table-hover" style="margin-top: 20px;">
+			<thead>
+				<tr class="info">
+					<th>CabID</th>
+					<th>CarType</th>
+					<th>PerKmRate</th>
+					<th>Update</th>
+					<th>CountOfType</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody id="myTable">
+				<tr th:each="key:${cab}">
+					<td th:utext="${key.cabid}"></td>
+					<td th:utext="${key.cartype}"></td>
+					<td th:utext="${key.perkmrate}"></td>
+					<td><a th:href="@{/loadcabform}" class="btn btn-success">Update</a></td>
+					<td><a th:href="@{countoftype1?(carType=${key.cartype})}"
+						class="btn btn-success">Count</a></td>
+					<td><a th:href="@{/delte1{id}(id=${key.cabid})}"
+						class="btn btn-danger">delete</a></td>
+				</tr>
+		</table>
+	</div>
+	<div class="col-md-6"></div>
+</html>

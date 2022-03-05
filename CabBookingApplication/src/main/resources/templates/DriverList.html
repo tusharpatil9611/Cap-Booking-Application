@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+body {
+	background-image: url(de.webp);
+}
+
+table, th, td {
+	border: 2px solid black;
+}
+</style>
+</head>
+<body>
+	<h1 style="text-align: center; text-shadow: 2px 2px 8px #FF0000;">Driver
+		List</h1>
+	<div class="col-md-4"></div>
+	<div class="col-md-5">
+		<table class="table table-hover" style="margin-top: 40px;">
+			<tr class="info">
+				<th>DriverID</th>
+				<th>LicenceNum</th>
+				<th>Rating</th>
+				<th>Delete Driver</th>
+				<th>Update</th>
+			</tr>
+			<tr th:each="key:${obj}">
+				<td th:utext="${key.driverid}"></td>
+				<td th:utext="${key.licenceNo}"></td>
+				<td th:utext="${key.rating}"></td>
+				<td><a th:href="@{/delete1{id}(id=${key.driverid})}"
+					class="btn btn-danger">delete</a></td>
+
+				<td><a th:href="@{/getform}" class="btn btn-success">Update</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<div>
+		<a th:href="@{/home}" class="btn btn-success">Back to Home</a>
+	</div>
+</body>
+</html>
